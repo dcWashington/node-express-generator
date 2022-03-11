@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const partnerSchema = new Schema({
+const promotionSchema = new Schema({
    name: {
         type: String,
         require: true,
@@ -9,7 +9,12 @@ const partnerSchema = new Schema({
     },
     image: {
         type: String,
-        require: true,
+        require: true
+    },
+    cost: {
+        type: Currency,
+        required: true,
+        min: 0
     },
     feature: {
         type: Boolean,
@@ -22,6 +27,6 @@ const partnerSchema = new Schema({
 });
 
 
-const Partner = mongoose.model('Partner', partnerSchema);
+const Promotion = mongoose.model('Promotion', promotionSchema);
 
-module.exports = Partner;
+module.exports = Promotion;
