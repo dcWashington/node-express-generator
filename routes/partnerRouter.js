@@ -51,8 +51,10 @@ partnerRouter.route('/:partnerId')
 })
 .post(cors.corsWithOptions, authenticate.verifyUser, (req, res) => {
     res.statusCode = 403;
-    res.end(`POST operation not supported on /partners/${req.params.partnerId}`);
-})
+    res.end(
+      `POST operation not supported on /partners/${req.params.partnerId}`
+    );
+  })
 .put(cors.corsWithOptions, authenticate.verifyUser, authenticate.verifyAdmin, (req, res, next) => {
     Partner.findByIdAndUpdate(req.params.partnerId, {
         $set: req.body
